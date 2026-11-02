@@ -47,7 +47,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("dev.isxander:yet-another-config-lib:3.8.2+1.21.1-neoforge")
+    compileOnly("dev.isxander:yet-another-config-lib:3.8.2+")
 }
 
 tasks.jar {
