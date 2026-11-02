@@ -1,0 +1,48 @@
+name: Patch Request
+description: Propose adding a patch for a Minecraft bug.
+title: "[Patch Request] MC-123456"
+labels: [patch request]
+body:
+  - type: input
+    id: mc-id
+    attributes:
+      label: Mojang Bug Report ID
+      description: What bug report would you like to be patched?
+      placeholder: MC-123456
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: adheres-to-guidelines
+    attributes:
+      label: Bug adhere to the guidelines.
+      description: You made sure that the bug adheres to the [guidelines](https://github.com/isXander/Debugify/blob/1.19/GUIDELINES.md).
+      options:
+        - label: I made sure that this bug adheres to the guidelines.
+          required: true
+
+  - type: checkboxes
+    id: not-already-requested
+    attributes:
+      label: Has not already been requested.
+      description: You made sure that the patch has not already been requested.
+      options:
+        - label: I am certain this patch has not already been requested.
+          required: true
+
+  - type: checkboxes
+    id: not-already-implemented
+    attributes:
+      label: Has not already been implemented.
+      description: You made sure that the patch has not already been implemented.
+      options:
+        - label: I know that this patch isn't already in the latest version of the mod.
+          required: true
+
+  - type: input
+    id: existing-implementation
+    attributes:
+      label: Existing implementation
+      description: Link here if a mod for this fix already exists.
+    validations:
+      required: false
