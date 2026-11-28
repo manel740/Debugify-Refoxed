@@ -4,12 +4,12 @@ license="LGPLv3"
 
 [[mods]]
 modId="debugify"
-version="1.21.1+1.1"
-displayName="Debugify"
-description="Fixes Minecraft bugs found on the bug tracker"
+version="1.21.1+1.2"
+displayName="Debugify Refoxed"
+description="Fixes Minecraft bugs found on the bug tracker (NeoForge port)"
 logoFile="debugify.png"
 authors="manel740"
-displayURL=""
+displayURL="https://github.com/manel740/Debugify-Refoxed"
 
 [[dependencies.debugify]]
 modId="neoforge"

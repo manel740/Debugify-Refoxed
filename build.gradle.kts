@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "dev.isxander"
-version = "1.21.1+1.1"
+version = "1.21.1+1.2"
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(21))
