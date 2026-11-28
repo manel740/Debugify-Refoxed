@@ -13,7 +13,7 @@ import net.minecraft.server.level.ChunkMap;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.ProtoChunk;
 
-@BugFix(id = "MC-224729", category = FixCategory.BASIC, env = BugFix.Env.SERVER, modConflicts = "chunksavingfix")
+@BugFix(id = "MC-224729", category = FixCategory.BASIC, env = BugFix.Env.SERVER, modConflicts = {"chunksavingfix", "sable"})
 @Mixin(ChunkMap.class)
 public class ChunkMapMixin {
 
@@ -22,9 +22,13 @@ public class ChunkMapMixin {
         return (chunkHolder) -> true;
     }
 
-    @ModifyArg(method = "saveAllChunks", at = @At(value = "INVOKE", target = "Ljava/util/stream/Stream;filter(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;", ordinal = 1), require = 0)
+    @ModifyArg(
+            method = "saveAllChunks",
+            at = @At(value = "INVOKE", target = "Ljava/util/stream/Stream;filter(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;", ordinal = 1),
+            require = 0
+    )
     private Predicate<ChunkAccess> saveProtoChunks(Predicate<ChunkAccess> predicate) {
-        return (c) -> predicate.test(c) || c instanceof ProtoChunk;
+        return (c) -> predicate.test(c) || (c instanceof ProtoChunk && c.isUnsaved());
     }
 
     @ModifyExpressionValue(method = "saveChunkIfNeeded", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ChunkHolder;wasAccessibleSinceLastSave()Z"), require = 0)
